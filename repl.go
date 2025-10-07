@@ -1,6 +1,33 @@
 package main
 
-import "strings"
+import (
+	"strings"
+	"bufio"
+	"os"
+	"fmt"
+)
+
+
+
+
+
+func startRepl() {
+	reader := bufio.NewScanner(os.Stdin)
+	for {
+		fmt.Print("Pokedex > ")
+		reader.Scan()
+		words := cleanInput(reader.Text())
+		if len(words) == 0 {
+			continue
+		}
+
+		commandWord := words[0]
+		cmdExit := commands["exit"]
+		if commandWord == cmdExit.name {
+			commandExit()
+		}
+	}
+}
 
 // split words by white space
 func cleanInput(text string) []string {
