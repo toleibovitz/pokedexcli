@@ -1,17 +1,14 @@
-package main
+package repl
 
 import (
 	"strings"
 	"bufio"
 	"os"
 	"fmt"
+	"github.com/toleibovitz/pokedexcli/internal/commands"
 )
 
-
-
-
-
-func startRepl() {
+func StartRepl() {
 	reader := bufio.NewScanner(os.Stdin)
 	for {
 		fmt.Print("Pokedex > ")
@@ -21,11 +18,9 @@ func startRepl() {
 			continue
 		}
 
-		commandWord := words[0]
-		cmdExit := commands["exit"]
-		if commandWord == cmdExit.name {
-			commandExit()
-		}
+		cmd := words[0]
+		commands.GetCommands()[cmd].Callback()
+		
 	}
 }
 
@@ -40,3 +35,6 @@ func cleanInput(text string) []string {
 	
 	return processed
 }
+
+
+
