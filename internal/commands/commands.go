@@ -3,8 +3,7 @@ package commands
 type cliCommand struct {
 	name string
 	description string
-	cfg *Config
-	Callback func(cfg *Config) error
+	Callback func(*Config) error
 	
 }
 

@@ -10,7 +10,8 @@ import (
 
 func StartRepl() {
 	reader := bufio.NewScanner(os.Stdin)
-	cfg := &commands.Config{}
+	// cfg := &commands.Config{}
+	var cfg *commands.Config
 	for {
 		fmt.Print("Pokedex > ")
 		reader.Scan()
